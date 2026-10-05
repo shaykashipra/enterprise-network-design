@@ -1,5 +1,7 @@
 # Enterprise Network Design with VLAN, Access/Core Switching & MPLS Architecture
 
+![Enterprise network topology](image.png)
+
 ## Overview
 
 This project designs and simulates a small enterprise branch network using Cisco Packet Tracer. The working implementation focuses on VLANs, access/core switching, trunking, inter-VLAN routing, DHCP, OSPF-based WAN routing, and a basic ACL policy.
