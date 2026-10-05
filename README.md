@@ -43,31 +43,7 @@ A small organization has a Head Office and two branch offices. Departments at th
 
 Logical topology:
 
-```text
-HR / Finance / IT / Sales / Server PCs
-        |
-        | access ports
-        |
-   HQ Access Switch
-        |
-        | 802.1Q trunk
-        |
-   HQ Core L3 Switch
-        |
-        | routed link
-        |
-     HQ Router
-        |
-        | WAN link
-        |
-   Provider/WAN Router
-      /              \
- Branch 1 Router   Branch 2 Router
-      |              |
- Branch 1 SW       Branch 2 SW
-      |              |
- Branch users      Branch users
-```
+<img 
 
 ## Device Roles
 
