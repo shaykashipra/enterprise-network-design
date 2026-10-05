@@ -43,7 +43,7 @@ A small organization has a Head Office and two branch offices. Departments at th
 
 Logical topology:
 
-<img 
+![Enterprise network topology](topology/image.png)
 
 ## Device Roles
 
