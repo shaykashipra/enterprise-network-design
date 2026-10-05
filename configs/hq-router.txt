@@ -1,0 +1,30 @@
+! Device: R-HQ
+! Model: Cisco 2911
+! Purpose: Head Office WAN edge router
+
+enable
+configure terminal
+hostname R-HQ
+
+interface gi0/0
+ description LINK_TO_CORE-HQ
+ ip address 10.10.99.2 255.255.255.252
+ no shutdown
+
+interface gi0/1
+ description WAN_LINK_TO_R-ISP
+ ip address 10.10.250.1 255.255.255.252
+ no shutdown
+
+router ospf 1
+ router-id 2.2.2.2
+ network 10.10.99.0 0.0.0.3 area 0
+ network 10.10.250.0 0.0.0.3 area 0
+
+end
+copy running-config startup-config
+
+! Verification:
+! show ip interface brief
+! show ip route
+! show ip ospf neighbor

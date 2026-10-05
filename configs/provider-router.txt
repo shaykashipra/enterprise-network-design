@@ -1,0 +1,37 @@
+! Device: R-ISP
+! Model: Cisco 2911
+! Purpose: Simulated provider/WAN router
+! Note: This is not full MPLS. It only simulates WAN IP routing.
+
+enable
+configure terminal
+hostname R-ISP
+
+interface gi0/0
+ description WAN_LINK_TO_R-HQ
+ ip address 10.10.250.2 255.255.255.252
+ no shutdown
+
+interface gi0/1
+ description WAN_LINK_TO_R-BR1
+ ip address 10.10.250.5 255.255.255.252
+ no shutdown
+
+interface gi0/2
+ description WAN_LINK_TO_R-BR2
+ ip address 10.10.250.9 255.255.255.252
+ no shutdown
+
+router ospf 1
+ router-id 3.3.3.3
+ network 10.10.250.0 0.0.0.3 area 0
+ network 10.10.250.4 0.0.0.3 area 0
+ network 10.10.250.8 0.0.0.3 area 0
+
+end
+copy running-config startup-config
+
+! Verification:
+! show ip interface brief
+! show ip route
+! show ip ospf neighbor

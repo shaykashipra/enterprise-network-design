@@ -1,0 +1,12 @@
+# Private preparation files. Keep these local; do not publish them.
+PROJECT_DETAILS.md
+INTERVIEW_PREP.md
+
+# Packet Tracer autosave/backup files
+*.bak
+*.tmp
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp

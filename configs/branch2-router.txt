@@ -1,0 +1,37 @@
+! Device: R-BR2
+! Model: Cisco 2911
+! Purpose: Branch 2 router, branch gateway, DHCP, OSPF
+
+enable
+configure terminal
+hostname R-BR2
+
+interface gi0/0
+ description WAN_LINK_TO_R-ISP
+ ip address 10.10.250.10 255.255.255.252
+ no shutdown
+
+interface gi0/1
+ description BRANCH2_LAN_GATEWAY
+ ip address 10.10.120.1 255.255.255.0
+ no shutdown
+
+ip dhcp excluded-address 10.10.120.1 10.10.120.20
+ip dhcp pool BRANCH2_LAN
+ network 10.10.120.0 255.255.255.0
+ default-router 10.10.120.1
+ dns-server 8.8.8.8
+
+router ospf 1
+ router-id 5.5.5.5
+ network 10.10.120.0 0.0.0.255 area 0
+ network 10.10.250.8 0.0.0.3 area 0
+
+end
+copy running-config startup-config
+
+! Verification:
+! show ip interface brief
+! show ip dhcp binding
+! show ip route
+! show ip ospf neighbor

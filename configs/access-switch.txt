@@ -1,0 +1,64 @@
+! Device: ASW-HQ
+! Model: Cisco 2960
+! Purpose: Head Office access switch
+
+enable
+configure terminal
+hostname ASW-HQ
+
+vlan 10
+ name HR
+vlan 20
+ name FINANCE
+vlan 30
+ name IT
+vlan 40
+ name SALES
+vlan 50
+ name MGMT
+vlan 60
+ name SERVERS
+
+interface fa0/1
+ description HR-PC
+ switchport mode access
+ switchport access vlan 10
+
+interface fa0/2
+ description FIN-PC
+ switchport mode access
+ switchport access vlan 20
+
+interface fa0/3
+ description IT-PC
+ switchport mode access
+ switchport access vlan 30
+
+interface fa0/4
+ description SALES-PC
+ switchport mode access
+ switchport access vlan 40
+
+interface fa0/5
+ description SERVER1
+ switchport mode access
+ switchport access vlan 60
+
+interface fa0/24
+ description TRUNK_TO_CORE-HQ
+ switchport mode trunk
+
+interface vlan 50
+ description MANAGEMENT_INTERFACE
+ ip address 10.10.50.11 255.255.255.0
+ no shutdown
+
+ip default-gateway 10.10.50.1
+
+end
+copy running-config startup-config
+
+! Verification:
+! show vlan brief
+! show interfaces trunk
+! show ip interface brief

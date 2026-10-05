@@ -1,0 +1,28 @@
+! Device: ASW-BR2
+! Model: Cisco 2960
+! Purpose: Branch 2 access switch
+
+enable
+configure terminal
+hostname ASW-BR2
+
+interface fa0/1
+ description BR2-PC
+ switchport mode access
+
+interface fa0/24
+ description LINK_TO_R-BR2
+ switchport mode access
+
+interface vlan 1
+ description MANAGEMENT_INTERFACE
+ ip address 10.10.120.11 255.255.255.0
+ no shutdown
+
+ip default-gateway 10.10.120.1
+
+end
+copy running-config startup-config
+
+! Verification:
+! show ip interface brief
